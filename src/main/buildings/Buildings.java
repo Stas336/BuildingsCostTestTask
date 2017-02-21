@@ -7,6 +7,7 @@ import java.util.Set;
 public final class Buildings
 {
     private static Map<String, String[]> buildings = new HashMap<>();
+    private static Buildings instance;
 
     private Buildings()
     {
@@ -17,7 +18,11 @@ public final class Buildings
     }
     public static Buildings newInstance()
     {
-        return new Buildings();
+        if (instance == null)
+        {
+            return instance = new Buildings();
+        }
+        return instance;
     }
     public String[] getBuilding(String building)
     {
