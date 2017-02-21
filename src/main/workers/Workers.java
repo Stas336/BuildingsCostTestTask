@@ -7,6 +7,7 @@ import java.util.Set;
 public final class Workers
 {
     private static Map<String, int[]> workers = new HashMap<>();
+    private static Workers instance;
 
     private Workers()
     {
@@ -19,7 +20,11 @@ public final class Workers
     }
     public static Workers newInstance()
     {
-        return new Workers();
+        if (instance == null)
+        {
+            return instance = new Workers();
+        }
+        return instance;
     }
     public int[] getWorker(String profession)
     {
